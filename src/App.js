@@ -8,13 +8,14 @@ import {
 
 // Pages
 import RootLayout from './Components/RootLayout/RootLayout';
-import BooksPage from './pages/BooksPage/BooksPage';
+import BooksPage from './pages/Books/BooksPage';
+import CategoriesPage from './pages/Categories/CategoriesPage';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<RootLayout />}>
       <Route index path="books" element={<BooksPage />} />
-      {/* <Route path="categories" element={<CategoriesPage />} /> */}
+      <Route path="categories" element={<CategoriesPage />} />
     </Route>,
   ),
 );
