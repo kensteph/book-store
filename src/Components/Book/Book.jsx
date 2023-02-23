@@ -7,7 +7,7 @@ const Book = ({ title, author }) => (
     <br />
     <span className="bookAuther">{author}</span>
     <br />
-    <button type="button">Remome</button>
+    <button type="button">Remove</button>
   </div>
 );
 Book.propTypes = { title: PropTypes.string.isRequired };
