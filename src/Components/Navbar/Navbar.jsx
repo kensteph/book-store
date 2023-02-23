@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const Navbar = () => (
   <header className="header">
@@ -7,10 +7,10 @@ const Navbar = () => (
       <h1>Bookstore CMS</h1>
       <ul className="menuLinks">
         <li>
-          <NavLink to="/books">BOOKS</NavLink>
+          <Link to="/books">BOOKS</Link>
         </li>
         <li>
-          <NavLink to="/categories">CATEGORIES</NavLink>
+          <Link to="/categories">CATEGORIES</Link>
         </li>
       </ul>
     </nav>
