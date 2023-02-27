@@ -6,7 +6,12 @@ const BooksPage = () => {
   const books = useSelector((store) => store.books);
 
   if (books.length === 0) {
-    return <h2>Library is empty....</h2>;
+    return (
+      <>
+        <h3>Library is empty....</h3>
+        <Form />
+      </>
+    );
   }
   return (
     <div
