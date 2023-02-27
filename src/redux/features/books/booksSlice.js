@@ -1,6 +1,9 @@
 /* eslint-disable no-param-reassign */
 import { createSlice } from '@reduxjs/toolkit';
 
+const baseURL =
+  'https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/xOI7HhKVUsDCTkv7qbXd/books';
+
 // Initial state
 const initialState = [
   {
@@ -37,6 +40,8 @@ const booksSlice = createSlice({
   },
 });
 
+// Export the state
+export const selectAllBooks = (state) => state.books;
 // Export the actions
 export const { addedBook, removedBook } = booksSlice.actions;
 // Export default the reducer

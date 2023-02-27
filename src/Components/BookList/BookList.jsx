@@ -1,10 +1,11 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import { selectAllBooks } from '../../redux/features/books/booksSlice';
 import Book from '../Book/Book';
 import Form from '../Form/Form';
 
 const BookList = () => {
-  const books = useSelector((store) => store.books);
+  const books = useSelector(selectAllBooks);
 
   if (books.length === 0) {
     return (
