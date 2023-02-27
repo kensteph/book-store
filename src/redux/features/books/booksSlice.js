@@ -6,6 +6,11 @@ const initialState = [];
 const booksSlice = createSlice({
   name: 'books',
   initialState,
+  reducers: {
+    addedBook: (state, action) => {
+      state.push(action.payload);
+    },
+  },
 });
 
 // Export the actions
