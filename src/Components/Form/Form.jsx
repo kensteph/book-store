@@ -53,7 +53,6 @@ const Form = () => {
         <option>Children</option>
         <option>Other</option>
       </select>
-      {/* <button type="submit">ADD BOOK</button> */}
       <AddButton />
     </form>
   );
