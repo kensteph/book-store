@@ -1,23 +1,32 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { v4 as uuidv4 } from 'uuid';
+import { addedBook } from '../../redux/features/books/booksSlice';
 
 const Form = () => {
-  const [inputs, setInputs] = useState({ book: '', author: '' });
+  const [inputs, setInputs] = useState({ title: '', author: '' });
+  const dispatch = useDispatch();
+
   const handleChange = (ev) => {
     setInputs((prevState) => ({
       ...prevState,
       [ev.target.name]: ev.target.value,
     }));
   };
-  const handleClick = () =>{
-    const newBook = {}
-  }
+  const handleClick = (ev) => {
+    ev.preventDefault();
+    const id = uuidv4();
+    const newBook = { id, ...inputs };
+    dispatch(addedBook(newBook));
+    setInputs({ title: '', author: '' });
+  };
   return (
-    <form>
+    <form onSubmit={handleClick}>
       <input
         placeholder="Book title"
         aria-label="Title"
-        name="book"
-        value={inputs.book}
+        name="title"
+        value={inputs.title}
         onChange={handleChange}
       />
       <input
