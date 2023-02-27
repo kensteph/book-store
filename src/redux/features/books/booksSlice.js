@@ -1,8 +1,21 @@
 /* eslint-disable no-param-reassign */
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import axios from 'axios';
 
-const baseURL =
-  'https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/xOI7HhKVUsDCTkv7qbXd/books';
+const baseURL = 'https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/xOI7HhKVUsDCTkv7qbXd/books';
+
+// Asynchronous
+export const getBookFromAPI = createAsyncThunk(
+  'books/getBookFromAPI',
+  async (thunkAPI) => {
+    try {
+      const response = await axios.get(baseURL);
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue('Something goes wrong.');
+    }
+  },
+);
 
 // Initial state
 const initialState = [
