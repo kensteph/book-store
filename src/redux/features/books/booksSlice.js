@@ -6,5 +6,9 @@ const initialState = [];
 const booksSlice = createSlice({
   name: 'books',
   initialState,
-  reducers: {},
 });
+
+// Export the actions
+
+// Export default the reducer
+export default booksSlice.reducer;
