@@ -55,13 +55,15 @@ const booksSlice = createSlice({
       return state.filter((book) => book.id !== bookId);
     },
   },
+  // Lifecycle actions
   extraReducers: {
     [getBookFromAPI.pending]: (state) => {
       state.isLoading = true;
     },
     [getBookFromAPI.fulfilled]: (state, action) => {
-      state.status = false;
-      console.log(action);
+      state.isLoading = false;
+      console.log(action.payload);
+      state = action.payload;
     },
     [getBookFromAPI.rejected]: (state) => {
       state.isLoading = false;
