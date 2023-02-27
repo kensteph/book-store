@@ -2,9 +2,10 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
 import { addedBook } from '../../redux/features/books/booksSlice';
+import AddButton from '../AddButton/AddButton';
 
 const Form = () => {
-  const [inputs, setInputs] = useState({ title: '', author: '' });
+  const [inputs, setInputs] = useState({ title: '', author: '', category: '' });
   const dispatch = useDispatch();
 
   const handleChange = (ev) => {
@@ -38,7 +39,22 @@ const Form = () => {
         onChange={handleChange}
         required
       />
-      <button type="submit">ADD BOOK</button>
+      <select name="category" onChange={handleChange} required>
+        <option value="">Category</option>
+        <option>Fiction</option>
+        <option>Non-Fiction</option>
+        <option>Romance</option>
+        <option>Mystery</option>
+        <option>Science Fiction</option>
+        <option>Fantasy</option>
+        <option>Horror</option>
+        <option>Thriller</option>
+        <option>Poetry</option>
+        <option>Children</option>
+        <option>Other</option>
+      </select>
+      {/* <button type="submit">ADD BOOK</button> */}
+      <AddButton />
     </form>
   );
 };

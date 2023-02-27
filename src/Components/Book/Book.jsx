@@ -11,7 +11,11 @@ const Book = ({ book }) => {
       <br />
       <span className="bookAuthor">{author}</span>
       <br />
+      Comments |
+      {' '}
       <button type="button">Remove</button>
+      {' '}
+      | Edit
     </div>
   );
 };
