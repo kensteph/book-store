@@ -4,7 +4,6 @@ import { checkStatus } from '../../redux/features/categories/categoriesSlice';
 
 const CategoriesPage = () => {
   const status = useSelector((store) => store.categories)[0];
-  console.log(status);
   const dispatch = useDispatch();
 
   return (
