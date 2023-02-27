@@ -2,7 +2,8 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-const baseURL = 'https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/xOI7HhKVUsDCTkv7qbXd/books';
+const baseURL =
+  'https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/xOI7HhKVUsDCTkv7qbXd/books';
 
 // Asynchronous
 export const getBookFromAPI = createAsyncThunk(
@@ -14,30 +15,33 @@ export const getBookFromAPI = createAsyncThunk(
     } catch (error) {
       return thunkAPI.rejectWithValue('Something goes wrong.');
     }
-  },
+  }
 );
 
 // Initial state
-const initialState = [
-  {
-    id: 'item1',
-    title: 'The Great Gatsby',
-    author: 'John Smith',
-    category: 'Fiction',
-  },
-  {
-    id: 'item2',
-    title: 'Anna Karenina',
-    author: 'Leo Tolstoy',
-    category: 'Fiction',
-  },
-  {
-    id: 'item3',
-    title: 'The Selfish Gene',
-    author: 'Richard Dawkins',
-    category: 'Nonfiction',
-  },
-];
+const initialState = {
+  isLoading: false,
+  books: [
+    {
+      id: 'item1',
+      title: 'The Great Gatsby',
+      author: 'John Smith',
+      category: 'Fiction',
+    },
+    {
+      id: 'item2',
+      title: 'Anna Karenina',
+      author: 'Leo Tolstoy',
+      category: 'Fiction',
+    },
+    {
+      id: 'item3',
+      title: 'The Selfish Gene',
+      author: 'Richard Dawkins',
+      category: 'Nonfiction',
+    },
+  ],
+};
 
 const booksSlice = createSlice({
   name: 'books',
@@ -51,10 +55,22 @@ const booksSlice = createSlice({
       return state.filter((book) => book.id !== bookId);
     },
   },
+  extraReducers: {
+    [getBookFromAPI.pending]: (state) => {
+      state.isLoading = true;
+    },
+    [getBookFromAPI.fulfilled]: (state, action) => {
+      state.status = false;
+      console.log(action);
+    },
+    [getBookFromAPI.rejected]: (state) => {
+      state.isLoading = false;
+    },
+  },
 });
 
 // Export the state
-export const selectAllBooks = (state) => state.books;
+export const selectAllBooks = (state) => state.books.books;
 // Export the actions
 export const { addedBook, removedBook } = booksSlice.actions;
 // Export default the reducer
