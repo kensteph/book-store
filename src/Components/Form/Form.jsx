@@ -28,6 +28,7 @@ const Form = () => {
         name="title"
         value={inputs.title}
         onChange={handleChange}
+        required
       />
       <input
         placeholder="Author"
@@ -35,6 +36,7 @@ const Form = () => {
         name="author"
         value={inputs.author}
         onChange={handleChange}
+        required
       />
       <button type="submit">ADD BOOK</button>
     </form>

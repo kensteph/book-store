@@ -2,14 +2,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 // Initial state
-const initialState = [
-  // {
-  //   id: 1,
-  //   title: 'To Kill a Mockingbird',
-  //   author: 'Harper Lee',
-  //   category: 'Sciences fixion',
-  // },
-];
+const initialState = [];
 
 const booksSlice = createSlice({
   name: 'books',
