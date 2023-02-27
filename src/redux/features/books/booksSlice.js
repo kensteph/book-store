@@ -2,7 +2,14 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 // Initial state
-const initialState = [];
+const initialState = [
+  // {
+  //   id: 1,
+  //   title: 'To Kill a Mockingbird',
+  //   author: 'Harper Lee',
+  //   category: 'Sciences fixion',
+  // },
+];
 
 const booksSlice = createSlice({
   name: 'books',
@@ -19,6 +26,6 @@ const booksSlice = createSlice({
 });
 
 // Export the actions
-
+export const { addedBook, removedBook } = booksSlice.actions;
 // Export default the reducer
 export default booksSlice.reducer;
