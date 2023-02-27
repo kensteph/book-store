@@ -1,9 +1,34 @@
-import React from 'react'
+import React from 'react';
+import { useSelector } from 'react-redux';
+import Book from '../Book/Book';
+import Form from '../Form/Form';
 
 const BookList = () => {
-  return (
-    <div>BookList</div>
-  )
-}
+  const books = useSelector((store) => store.books);
 
-export default BookList
+  if (books.length === 0) {
+    return (
+      <>
+        <h3>Library is empty....</h3>
+        <Form />
+      </>
+    );
+  }
+  return (
+    <div
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '20px',
+        padding: '50px',
+      }}
+    >
+      {books?.map((book) => (
+        <Book key={book.id} title={book.title} author={book.author} />
+      ))}
+      <Form />
+    </div>
+  );
+};
+
+export default BookList;
