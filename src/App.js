@@ -26,11 +26,11 @@ const router = createBrowserRouter(
 
 function App() {
   const dispatch = useDispatch();
-  const ifBookAdded = useSelector((store) => store.books.ifBookAdded);
+  const ifSucceed = useSelector((store) => store.books.ifSucceed);
 
   useEffect(() => {
     dispatch(getBookFromAPI());
-  }, [dispatch, ifBookAdded]);
+  }, [dispatch, ifSucceed]);
 
   return <RouterProvider router={router} />;
 }

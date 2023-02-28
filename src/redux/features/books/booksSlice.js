@@ -30,27 +30,30 @@ export const postBookToAPI = createAsyncThunk(
   },
 );
 
+export const removeBookFromAPI = createAsyncThunk(
+  'books/removeBookFromAPI',
+  async (id, thunkAPI) => {
+    try {
+      const response = await axios.delete(`${baseURL}/${id}`);
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error);
+    }
+  },
+);
+
 // =======================================
 
 // Initial state
 const initialState = {
   isLoading: false,
-  ifBookAdded: false,
+  ifSucceed: false,
   books: [],
 };
 
 const booksSlice = createSlice({
   name: 'books',
   initialState,
-  reducers: {
-    addedBook: (state, action) => {
-      state.push(action.payload);
-    },
-    removedBook: (state, action) => {
-      const bookId = action.payload;
-      return state.filter((book) => book.id !== bookId);
-    },
-  },
   // Lifecycle actions
   extraReducers: {
     // ======= getBookFromAPI ==========
@@ -69,15 +72,27 @@ const booksSlice = createSlice({
     [getBookFromAPI.rejected]: (state) => {
       state.isLoading = false;
     },
-    // postBookToAPI
+
+    // ===========postBookToAPI==========
     [postBookToAPI.pending]: (state) => {
-      state.ifBookAdded = false;
+      state.ifSucceed = false;
     },
     [postBookToAPI.fulfilled]: (state) => {
-      state.ifBookAdded = true;
+      state.ifSucceed = true;
     },
     [postBookToAPI.rejected]: (state) => {
-      state.ifBookAdded = false;
+      state.ifSucceed = false;
+    },
+
+    // ========== removeBookFromAPI ==========
+    [removeBookFromAPI.pending]: (state) => {
+      state.ifSucceed = false;
+    },
+    [removeBookFromAPI.fulfilled]: (state) => {
+      state.ifSucceed = true;
+    },
+    [removeBookFromAPI.rejected]: (state) => {
+      state.ifSucceed = false;
     },
   },
 });
