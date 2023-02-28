@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 import { removeBookFromAPI } from '../../redux/features/books/booksSlice';
+import Progress from '../Progress/Progress';
 
 const Book = ({ book }) => {
   const {
@@ -27,6 +28,7 @@ const Book = ({ book }) => {
       </button>
       {' '}
       | Edit
+      <Progress />
     </div>
   );
 };
