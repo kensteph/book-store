@@ -25,7 +25,7 @@ body {
 .header {
   font-family: 'Montserrat', sans-serif;
   border-bottom: 1px solid var(--white);
-  padding: 0 10rem 0 10rem;
+  padding: 0 5rem 0 5rem;
 }
 
 .navBar {
@@ -48,7 +48,7 @@ a {
 
 .menuLinks {
   display: flex;
-  gap: 5rem;
+  gap: 3rem;
   list-style: none;
 }
 
