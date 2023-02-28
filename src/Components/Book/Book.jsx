@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
-import { removedBook } from '../../redux/features/books/booksSlice';
+import { removeBookFromAPI } from '../../redux/features/books/booksSlice';
 
 const Book = ({ book }) => {
   const {
@@ -10,7 +10,7 @@ const Book = ({ book }) => {
   const dispatch = useDispatch();
 
   const handleRemoveBook = () => {
-    dispatch(removedBook(id));
+    dispatch(removeBookFromAPI(id));
   };
   return (
     <div className="book">
