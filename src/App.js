@@ -5,14 +5,11 @@ import {
   RouterProvider,
   Route,
 } from 'react-router-dom';
-import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 
 // Pages
 import RootLayout from './Components/RootLayout/RootLayout';
 import BooksPage from './pages/Books/BooksPage';
 import CategoriesPage from './pages/Categories/CategoriesPage';
-import { getBookFromAPI } from './redux/features/books/booksSlice';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -25,13 +22,6 @@ const router = createBrowserRouter(
 );
 
 function App() {
-  const dispatch = useDispatch();
-  const ifSucceed = useSelector((store) => store.books.ifSucceed);
-
-  useEffect(() => {
-    dispatch(getBookFromAPI());
-  }, [dispatch, ifSucceed]);
-
   return <RouterProvider router={router} />;
 }
 

@@ -1,11 +1,20 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
-import { selectAllBooks } from '../../redux/features/books/booksSlice';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  selectAllBooks,
+  getBookFromAPI,
+} from '../../redux/features/books/booksSlice';
 import Book from '../Book/Book';
 import Form from '../Form/Form';
 
 const BookList = () => {
   const books = useSelector(selectAllBooks);
+  const dispatch = useDispatch();
+  const ifSucceed = useSelector((store) => store.books.ifSucceed);
+
+  useEffect(() => {
+    dispatch(getBookFromAPI());
+  }, [dispatch, ifSucceed]);
 
   if (books.length === 0) {
     return (
