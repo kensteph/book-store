@@ -2,10 +2,10 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-const baseURL =
-  'https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/xOI7HhKVUsDCTkv7qbXd/books';
+const baseURL = 'https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/xOI7HhKVUsDCTkv7qbXd/books';
 
-// Asynchronous
+// =============== Asynchronous =============
+
 export const getBookFromAPI = createAsyncThunk(
   'books/getBookFromAPI',
   async (thunkAPI) => {
@@ -15,32 +15,28 @@ export const getBookFromAPI = createAsyncThunk(
     } catch (error) {
       return thunkAPI.rejectWithValue('Something goes wrong.');
     }
-  }
+  },
 );
+
+export const postBookToAPI = createAsyncThunk(
+  'books/postBookToAPI',
+  async (data, thunkAPI) => {
+    try {
+      const response = await axios.post(baseURL, data);
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error);
+    }
+  },
+);
+
+// =======================================
 
 // Initial state
 const initialState = {
   isLoading: false,
-  books: [
-    {
-      id: 'item1',
-      title: 'The Great Gatsby',
-      author: 'John Smith',
-      category: 'Fiction',
-    },
-    {
-      id: 'item2',
-      title: 'Anna Karenina',
-      author: 'Leo Tolstoy',
-      category: 'Fiction',
-    },
-    {
-      id: 'item3',
-      title: 'The Selfish Gene',
-      author: 'Richard Dawkins',
-      category: 'Nonfiction',
-    },
-  ],
+  ifBookAdded: false,
+  books: [],
 };
 
 const booksSlice = createSlice({
@@ -57,16 +53,31 @@ const booksSlice = createSlice({
   },
   // Lifecycle actions
   extraReducers: {
+    // ======= getBookFromAPI ==========
     [getBookFromAPI.pending]: (state) => {
       state.isLoading = true;
     },
     [getBookFromAPI.fulfilled]: (state, action) => {
       state.isLoading = false;
-      console.log(action.payload);
-      state = action.payload;
+      const data = action.payload;
+      const books = Object.entries(data).map(([id, item]) => {
+        const singleBook = { id, ...item[0] };
+        return singleBook;
+      });
+      state.books = books;
     },
     [getBookFromAPI.rejected]: (state) => {
       state.isLoading = false;
+    },
+    // postBookToAPI
+    [postBookToAPI.pending]: (state) => {
+      state.ifBookAdded = false;
+    },
+    [postBookToAPI.fulfilled]: (state) => {
+      state.ifBookAdded = true;
+    },
+    [postBookToAPI.rejected]: (state) => {
+      state.ifBookAdded = false;
     },
   },
 });

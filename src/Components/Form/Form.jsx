@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
-import { addedBook } from '../../redux/features/books/booksSlice';
+import { postBookToAPI } from '../../redux/features/books/booksSlice';
 import AddButton from '../AddButton/AddButton';
 
 const Form = () => {
@@ -17,8 +17,8 @@ const Form = () => {
   const handleClick = (ev) => {
     ev.preventDefault();
     const id = uuidv4();
-    const newBook = { id, ...inputs };
-    dispatch(addedBook(newBook));
+    const newBook = { item_id: id, ...inputs };
+    dispatch(postBookToAPI(newBook));
     setInputs({ title: '', author: '' });
   };
   return (

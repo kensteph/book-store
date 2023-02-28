@@ -6,7 +6,7 @@ import {
   Route,
 } from 'react-router-dom';
 import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 // Pages
 import RootLayout from './Components/RootLayout/RootLayout';
@@ -26,10 +26,11 @@ const router = createBrowserRouter(
 
 function App() {
   const dispatch = useDispatch();
+  const ifBookAdded = useSelector((store) => store.books.ifBookAdded);
 
   useEffect(() => {
     dispatch(getBookFromAPI());
-  }, []);
+  }, [dispatch, ifBookAdded]);
 
   return <RouterProvider router={router} />;
 }
