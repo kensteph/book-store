@@ -65,7 +65,7 @@
 
 > Here you can visit my live demo :
 
-- [N/A]()
+- [BookSore CMS](https://bookstore-cms-xxgs.onrender.com)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
