@@ -4,15 +4,24 @@ import { Link } from 'react-router-dom';
 const Navbar = () => (
   <header className="header">
     <nav className="navBar">
-      <h1>Bookstore CMS</h1>
-      <ul className="menuLinks">
-        <li>
-          <Link to="/books">BOOKS</Link>
-        </li>
-        <li>
-          <Link to="/categories">CATEGORIES</Link>
-        </li>
-      </ul>
+      <div className="block1">
+        <span className="Bookstore-cms">Bookstore CMS</span>
+        <ul className="menuLinks">
+          <li>
+            <Link to="/books">
+              <span className="books">BOOKS</span>
+            </Link>
+          </li>
+          <li>
+            <Link to="/categories">
+              <span className="categories">CATEGORIES</span>
+            </Link>
+          </li>
+        </ul>
+      </div>
+      <div className="oval">
+        <span className="material-symbols-outlined blue">person</span>
+      </div>
     </nav>
   </header>
 );

@@ -22,39 +22,48 @@ const Form = () => {
     setInputs({ title: '', author: '' });
   };
   return (
-    <form onSubmit={handleClick}>
-      <input
-        placeholder="Book title"
-        aria-label="Title"
-        name="title"
-        value={inputs.title}
-        onChange={handleChange}
-        required
-      />
-      <input
-        placeholder="Author"
-        aria-label="Author"
-        name="author"
-        value={inputs.author}
-        onChange={handleChange}
-        required
-      />
-      <select name="category" onChange={handleChange} required>
-        <option value="">Category</option>
-        <option>Fiction</option>
-        <option>Non-Fiction</option>
-        <option>Romance</option>
-        <option>Mystery</option>
-        <option>Science Fiction</option>
-        <option>Fantasy</option>
-        <option>Horror</option>
-        <option>Thriller</option>
-        <option>Poetry</option>
-        <option>Children</option>
-        <option>Other</option>
-      </select>
-      <AddButton />
-    </form>
+    <section className="formSection">
+      <span className="formTitle">
+        ADD NEW BOOK
+      </span>
+      <form onSubmit={handleClick}>
+        <input
+          className="inputField"
+          placeholder="Book title"
+          aria-label="Title"
+          name="title"
+          value={inputs.title}
+          onChange={handleChange}
+          required
+        />
+        <input
+          className="inputField"
+          placeholder="Author"
+          aria-label="Author"
+          name="author"
+          value={inputs.author}
+          onChange={handleChange}
+          required
+        />
+        <select name="category" className="inputField" onChange={handleChange} required>
+          <option value="">Category</option>
+          <option>Fiction</option>
+          <option>Comedy</option>
+          <option>Non-Fiction</option>
+          <option>Romance</option>
+          <option>Mystery</option>
+          <option>Science Fiction</option>
+          <option>Fantasy</option>
+          <option>Horror</option>
+          <option>Thriller</option>
+          <option>Poetry</option>
+          <option>Children</option>
+          <option>Programming</option>
+          <option>Other</option>
+        </select>
+        <AddButton className="addBook" />
+      </form>
+    </section>
   );
 };
 

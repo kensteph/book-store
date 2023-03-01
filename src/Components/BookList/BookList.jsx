@@ -11,31 +11,22 @@ const BookList = () => {
   const books = useSelector(selectAllBooks);
   const dispatch = useDispatch();
   const ifSucceed = useSelector((store) => store.books.ifSucceed);
+  const isLoading = useSelector((store) => store.books.isLoading);
 
   useEffect(() => {
     dispatch(getBookFromAPI());
   }, [dispatch, ifSucceed]);
 
-  if (books.length === 0) {
-    return (
-      <>
-        <h3>Library is empty....</h3>
-        <Form />
-      </>
-    );
-  }
   return (
-    <div
-      style={{
-        display: 'flex',
-        flexDirection: 'column',
-        gap: '20px',
-        padding: '50px',
-      }}
-    >
+    <div className="bookListContainer">
+      {isLoading && <div className="loading"> </div>}
+      {!isLoading && books.length === 0 && (
+        <h3 className="libraryEmpty">Library is empty....</h3>
+      )}
       {books?.map((book) => (
         <Book key={book.id} book={book} />
       ))}
+      <hr className="line" />
       <Form />
     </div>
   );
