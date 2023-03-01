@@ -7,9 +7,9 @@ const CategoriesPage = () => {
   const dispatch = useDispatch();
 
   return (
-    <div>
+    <div className="categoriesContainer">
       <p className="checkStatus">{status}</p>
-      <button type="button" onClick={() => dispatch(checkStatus())}>
+      <button className="addBook" type="button" onClick={() => dispatch(checkStatus())}>
         CHECK STATUS
       </button>
     </div>

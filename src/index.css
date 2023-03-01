@@ -199,6 +199,15 @@ a {
   }
 }
 
+/* =============BOOKLIST COMPONENT ============= */
+
+.bookListContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 5rem;
+}
+
 /* ========== BOOK COMPONENT============= */
 
 .bookCard {
@@ -414,4 +423,19 @@ form :first-child {
   letter-spacing: 0.5px;
   text-align: center;
   color: #fff;
+}
+
+/* Categories Page */
+.categoriesContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  padding: 10rem;
+}
+
+.checkStatus {
+  font-size: 2rem;
+  font-weight: bold;
 }

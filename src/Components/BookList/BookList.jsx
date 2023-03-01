@@ -25,14 +25,7 @@ const BookList = () => {
     );
   }
   return (
-    <div
-      style={{
-        display: 'flex',
-        flexDirection: 'column',
-        gap: '20px',
-        padding: '50px',
-      }}
-    >
+    <div className="bookListContainer">
       {books?.map((book) => (
         <Book key={book.id} book={book} />
       ))}
