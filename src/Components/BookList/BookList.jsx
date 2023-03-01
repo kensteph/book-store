@@ -36,6 +36,7 @@ const BookList = () => {
       {books?.map((book) => (
         <Book key={book.id} book={book} />
       ))}
+      <hr className="line" />
       <Form />
     </div>
   );
