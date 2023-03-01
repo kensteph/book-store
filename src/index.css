@@ -208,6 +208,10 @@ a {
   padding: 5rem;
 }
 
+.libraryEmpty {
+  align-self: center;
+}
+
 /* ========== BOOK COMPONENT============= */
 
 .bookCard {
@@ -438,4 +442,30 @@ form :first-child {
 .checkStatus {
   font-size: 2rem;
   font-weight: bold;
+}
+
+/* creating css loader */
+
+.loading {
+  width: 5rem;
+  height: 5rem;
+  border: 5px solid #f3f3f3;
+  border-top: 6px solid #0290ff;
+  border-radius: 100%;
+  margin: auto;
+  animation: spin 1s infinite linear;
+}
+
+.loading.display {
+  display: block;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
 }
