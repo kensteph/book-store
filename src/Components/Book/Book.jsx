@@ -14,21 +14,54 @@ const Book = ({ book }) => {
     dispatch(removeBookFromAPI(id));
   };
   return (
-    <div className="book">
-      <span className="bookTitle">{category}</span>
-      <br />
-      <span className="bookTitle">{title}</span>
-      <br />
-      <span className="bookAuthor">{author}</span>
-      <br />
-      Comments |
-      {' '}
-      <button type="button" onClick={handleRemoveBook}>
-        Remove
-      </button>
-      {' '}
-      | Edit
-      <Progress />
+    <div className="bookCard">
+      <div className="bookInfo">
+        <div className="infos">
+          <span className="bookCategory">{category}</span>
+          <span className="bookTitle">{title}</span>
+          <span className="bookAuthor">{author}</span>
+        </div>
+        <ul className="actions">
+          <li>
+            <span className="actionItem">Comments</span>
+          </li>
+          <li>
+            <span className="separator">|</span>
+          </li>
+          <li>
+            <button
+              className="actionItem"
+              type="button"
+              onClick={handleRemoveBook}
+            >
+              Remove
+            </button>
+          </li>
+          <li>
+            <span className="separator">|</span>
+          </li>
+          <li>
+            <span className="actionItem">Edit</span>
+          </li>
+        </ul>
+      </div>
+      <ul className="bookProgress">
+        <li><Progress /></li>
+        <li>
+          <div className="currentChapterContainer">
+            <span className="currentChapter">
+              Current Chapter
+            </span>
+            <span className="chapter">
+              Chapter 17
+            </span>
+            <button className="updateBtn" type="button">Update progress</button>
+          </div>
+
+        </li>
+
+      </ul>
+
     </div>
   );
 };

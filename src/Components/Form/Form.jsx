@@ -42,6 +42,7 @@ const Form = () => {
       <select name="category" onChange={handleChange} required>
         <option value="">Category</option>
         <option>Fiction</option>
+        <option>Comedy</option>
         <option>Non-Fiction</option>
         <option>Romance</option>
         <option>Mystery</option>
@@ -51,6 +52,7 @@ const Form = () => {
         <option>Thriller</option>
         <option>Poetry</option>
         <option>Children</option>
+        <option>Programming</option>
         <option>Other</option>
       </select>
       <AddButton />
